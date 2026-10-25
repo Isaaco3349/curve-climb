@@ -156,10 +156,12 @@ button,
 .overlay {
   position: fixed;
   inset: 0;
+  z-index: 1000;
   background: rgba(0, 0, 0, 0.72);
   display: grid;
   place-items: center;
   padding: 1rem;
+  pointer-events: auto;
 }
 
 .overlay[hidden] {
@@ -183,8 +185,18 @@ button,
   line-height: 1.5;
 }
 
-.card button {
+.overlay-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.overlay-actions button {
   width: 100%;
   justify-content: center;
+}
+
+body.game-active .shell {
+  pointer-events: none;
 }

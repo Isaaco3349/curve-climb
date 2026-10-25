@@ -37,7 +37,7 @@
 
       <canvas id="game" aria-label="Curve Climb game" role="img"></canvas>
 
-      <p class="hint">Space / tap = jump · First 20s = snipe tax zone (like a fresh curve launch)</p>
+      <p class="hint">Space / tap = jump · Esc or backdrop = close results · First 20s = snipe tax zone</p>
 
       <footer class="foot">
         <a href="https://testnet.vibevibe.fun/faucet">vibe faucet</a>
@@ -48,10 +48,13 @@
     </div>
 
     <div id="overlay" class="overlay" hidden>
-      <div class="card">
+      <div class="card" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
         <h2 id="overlay-title"></h2>
         <p id="overlay-body"></p>
-        <button id="overlay-dismiss" type="button" class="primary">Run again</button>
+        <div class="overlay-actions">
+          <button id="overlay-again" type="button" class="primary">Run again</button>
+          <button id="overlay-home" type="button" class="ghost">Back to home</button>
+        </div>
       </div>
     </div>
 
