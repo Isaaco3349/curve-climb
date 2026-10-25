@@ -69,9 +69,12 @@ function loop(now) {
   const end = game.tick(dt);
   game.draw();
   if (end === "won") {
+    const pct = curveState.graduated
+      ? "This token already graduated on vibe/vibe."
+      : `On-chain bonding is still ${curveState.progress.toFixed(1)}% — this run did not graduate the token.`;
     showOverlay(
-      "Graduation gate reached",
-      "You made it to the pool door. Share your run and go trade on vibe/vibe testnet (wallet + faucet ETH).",
+      "Run cleared — game gate only",
+      `${pct} You reached the in-game GRADUATE platform. Share your run or trade on the launchpad (wallet + testnet ETH).`,
     );
   } else if (end === "lost") {
     showOverlay(
@@ -96,7 +99,7 @@ btnPlay.addEventListener("click", () => {
 });
 
 btnShare.addEventListener("click", () => {
-  const text = game?.getShareText(tokenAddress, "CLIMB") ?? "Curve Climb on vibe/vibe testnet";
+  const text = game?.getShareText(tokenAddress, "GRUN") ?? "Curve Climb · $GRUN on vibe/vibe testnet";
   const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank", "noopener,noreferrer");
 });
