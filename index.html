@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curve Climb · vibe/vibe testnet</title>
+    <meta
+      name="description"
+      content="Browser runner on a live bonding curve. VIBEVIBE pair · Robinhood Chain testnet · no wallet to play."
+    />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <p class="eyebrow">Product &amp; Utility · VIBEVIBE pair · testnet only</p>
+        <h1>Curve Climb</h1>
+        <p class="lede">
+          The level <em>is</em> your bonding curve. Start at live on chain graduation %, dodge snipe tax
+          ghosts, ride buy platforms, survive sell pits, and reach the graduation gate.
+        </p>
+      </header>
+
+      <section class="panel">
+        <label class="field">
+          <span>Your vibe/vibe token (after launch)</span>
+          <input id="token-input" type="text" spellcheck="false" placeholder="0x…" />
+        </label>
+        <div class="actions">
+          <button id="btn-play" type="button" class="primary">Run the curve</button>
+          <button id="btn-sync" type="button" class="ghost">Sync chain</button>
+          <button id="btn-share" type="button" class="ghost">Share on X</button>
+          <a id="btn-trade" class="ghost link" href="#" target="_blank" rel="noopener noreferrer">Trade on vibe/vibe</a>
+        </div>
+        <p id="status" class="status" data-tone="neutral">Connecting…</p>
+      </section>
+
+      <canvas id="game" aria-label="Curve Climb game" role="img"></canvas>
+
+      <p class="hint">Space / tap = jump · First 20s = snipe tax zone (like a fresh curve launch)</p>
+
+      <footer class="foot">
+        <a href="https://testnet.vibevibe.fun/faucet">vibe faucet</a>
+        <a href="https://faucet.testnet.chain.robinhood.com">Robinhood test ETH</a>
+        <a href="https://testnet.vibevibe.fun/create">Launch token</a>
+        <a href="https://testnet.vibevibe.fun/docs/#start-here/builders">Builder docs</a>
+      </footer>
+    </div>
+
+    <div id="overlay" class="overlay" hidden>
+      <div class="card">
+        <h2 id="overlay-title"></h2>
+        <p id="overlay-body"></p>
+        <button id="overlay-dismiss" type="button" class="primary">Run again</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
