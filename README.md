@@ -1,5 +1,7 @@
 # Curve Climb
 
+**Live:** [curve-climb.vercel.app](https://curve-climb.vercel.app) · **Repo:** [github.com/Isaaco3349/curve-climb](https://github.com/Isaaco3349/curve-climb)
+
 Browser runner for [vibe/vibe](https://testnet.vibevibe.fun) testnet. The HUD bar is a **live bonding curve** read from Robinhood Chain (V6 factory). You start at the current graduation % and run toward the **graduation gate** — with a snipe-tax zone, buy/sell platforms, and momentum mechanics.
 
 **Pair:** launch with **VIBEVIBE** as quote on the create flow.
