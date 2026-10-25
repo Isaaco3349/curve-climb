@@ -381,6 +381,6 @@ export class CurveClimbGame {
   getShareText(tokenAddress, ticker = "GRUN") {
     const pct = this.curve.progress.toFixed(1);
     const mode = this.curve.graduated ? "graduated on chain" : `${pct}% on curve (game run cleared)`;
-    return `Cleared the gate in Curve Climb — $${ticker} ${mode} · VIBEVIBE pair\nPlay: https://curve-climb.vercel.app/?token=${tokenAddress}\n@vibevibefun #GRUN #curveclimb`;
+    return `Cleared the gate in Curve Climb — $${ticker} ${mode}\nPlay: https://curve-climb.vercel.app/?token=${tokenAddress}\nTrade: https://testnet.vibevibe.fun/token/${tokenAddress}\n@vibevibefun #GRUN #curveclimb`;
   }
 }

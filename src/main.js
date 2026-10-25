@@ -103,7 +103,7 @@ async function refreshCurve(showSpinner = true) {
       ? "Graduated 🎓 · arcade replay enabled"
       : `${curveState.progress.toFixed(1)}% to graduation`;
 
-    setStatus(`Live curve · ${tag} · VIBEVIBE pair`, "ok");
+    setStatus(`Live curve · ${tag} · $GRUN on vibe/vibe`, "ok");
 
     btnTrade.href = tokenPageUrl(tokenAddress);
 

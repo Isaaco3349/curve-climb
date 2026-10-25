@@ -7,8 +7,13 @@ export const CHAIN = {
 
 export const V6_FACTORY = "0xe794217880011f9cA6961340eD5c16EC9559Fea0";
 
-/** Demo token (VIBEVIBE pair) until you paste your launch address */
-export const DEMO_TOKEN = "0x35750D0EC4000a92f49274631D6c4BA9E714d8B8";
+/** Graduation Run ($GRUN) on vibe/vibe testnet */
+export const GRUN_TOKEN = "0x5497cC09800C8715F08543bB8FEfb66e4357b313";
+
+/** Default when no ?token= in URL */
+export const DEMO_TOKEN = GRUN_TOKEN;
+
+export const PLAY_URL = "https://curve-climb.vercel.app";
 
 export const LINKS = {
   vibeCreate: "https://testnet.vibevibe.fun/create",
