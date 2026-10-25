@@ -78,6 +78,7 @@ async function refreshCurve(showSpinner = true) {
 
   tokenAddress = tokenInput.value.trim() || DEMO_TOKEN;
 
+  tokenAddress = tokenAddress.trim();
   if (!/^0x[a-fA-F0-9]{40}$/.test(tokenAddress)) {
 
     setStatus("Invalid token address — using demo.", "warn");
@@ -98,7 +99,9 @@ async function refreshCurve(showSpinner = true) {
 
     curveState = await fetchCurveState(tokenAddress);
 
-    const tag = curveState.graduated ? "Graduated 🎓" : `${curveState.progress.toFixed(1)}% to graduation`;
+    const tag = curveState.graduated
+      ? "Graduated 🎓 · arcade replay enabled"
+      : `${curveState.progress.toFixed(1)}% to graduation`;
 
     setStatus(`Live curve · ${tag} · VIBEVIBE pair`, "ok");
 
@@ -157,9 +160,7 @@ function showEndOverlay(outcome) {
   if (outcome === "won") {
 
     const pct = curveState.graduated
-
-      ? "This token already graduated on vibe/vibe."
-
+      ? "This token already graduated on vibe/vibe. You played an arcade replay (full climb for fun)."
       : `On-chain bonding is still ${curveState.progress.toFixed(1)}% — this run did not graduate the token.`;
 
     showOverlay(

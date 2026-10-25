@@ -7,6 +7,9 @@ const GRAVITY = 2200;
 const RUN_SPEED_BASE = 280;
 const JUMP_VEL = -620;
 const SNIPE_WINDOW = 20;
+/** Must run at least this long / far before the in-game gate counts as a win */
+const MIN_GATE_SECONDS = 3;
+const MIN_GATE_DISTANCE = 380;
 
 export class CurveClimbGame {
   /**
@@ -29,11 +32,15 @@ export class CurveClimbGame {
     this.orbs = 0;
     this.momentum = 100;
 
-    this.startProgress = Math.max(0, Math.min(curve.progress, 95));
+    this.arcadeReplay = curve.graduated || curve.progress >= 98;
+    this.startProgress = this.arcadeReplay
+      ? 0
+      : Math.max(0, Math.min(curve.progress, 85));
     this.goalProgress = 100;
 
     const span = (this.goalProgress - this.startProgress) / 100;
     this.worldLength = 2400 + span * 5200;
+    this.spawnX = (this.startProgress / 100) * this.worldLength + 40;
 
     this.player = { x: 80, y: 0, vy: 0, w: 28, h: 36, grounded: false, jumps: 0 };
     this.platforms = [];
@@ -173,8 +180,10 @@ export class CurveClimbGame {
           this._burst(p.x + p.w / 2, p.y, "#f87171");
         }
         if (p.kind === "gate") {
-          this.state = "won";
-          return this.state;
+          if (this.runTime >= MIN_GATE_SECONDS && this.distance >= MIN_GATE_DISTANCE) {
+            this.state = "won";
+            return this.state;
+          }
         }
       }
     }
@@ -278,11 +287,10 @@ export class CurveClimbGame {
 
     ctx.fillStyle = "#e9e4ff";
     ctx.font = "600 13px system-ui, sans-serif";
-    ctx.fillText(
-      `Bonding ${this.curve.progress.toFixed(1)}% → graduation`,
-      pad,
-      y + h + 18,
-    );
+    const liveLabel = this.curve.graduated
+      ? `Live: graduated on vibe/vibe · ${this.arcadeReplay ? "Arcade replay" : "Run"}`
+      : `Bonding ${this.curve.progress.toFixed(1)}% → graduation`;
+    ctx.fillText(liveLabel, pad, y + h + 18);
 
     if (this.runTime < SNIPE_WINDOW) {
       ctx.fillStyle = "#fca5a5";
